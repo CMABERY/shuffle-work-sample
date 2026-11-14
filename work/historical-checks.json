@@ -1,0 +1,28 @@
+{
+  "schema": "historical-dice-check-summary/1",
+  "scope": "Aggregate historical account findings; no raw account records included.",
+  "outcome_replay": {
+    "source_sha256": "5015516ecc4d2cee5d468140a10f15766eff40407984bc35e79ea2e6e46ea1c9",
+    "revealed_replayed": 25054,
+    "unrevealed_not_replayed": 819,
+    "mismatches": 0,
+    "checked_utc": "2026-11-13T22:22:28.703556+00:00"
+  },
+  "pattern_search": {
+    "candidate_count": 2988,
+    "frozen_development_selections": 34,
+    "passed_declared_two_stage_standard": 0,
+    "completed_utc": "2026-11-04T02:12:00.774876+00:00",
+    "source_summary_sha256": "c40f21de394db5d8d786b36296014fd8a1101bd57df95845761126be5559680b",
+    "protocol_sha256": "747f5553ec8ac01cdb4619eaf0a1fdc0d4b31380c6603eb7fbc8d92288ae0930",
+    "development_selection_sha256": "03cb6e70568c91f5db1804523a70e5058203b4d6783e39e368153f7256652c18",
+    "limits": [
+      "Retrospective archive; not prospective replication.",
+      "Limited power for small effects.",
+      "A suggestive joint diagnostic did not meet the separate finding rule."
+    ]
+  },
+  "replay_limits": [
+    "Does not establish prior commitment publication, unbiased seed selection, source authenticity or completeness."
+  ]
+}

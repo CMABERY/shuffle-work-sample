@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Colton Mabery: inspectable simulations, Dice checks and a proposed promotion-analysis project."><title>Colton Mabery — testing game rules</title><style>:root{color-scheme:light;font:18px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#182b29;background:#f5f4ee}
+*{box-sizing:border-box}body{margin:0}main{max-width:48rem;margin:0 auto;padding:3.5rem 1.5rem 4rem}h1{font-size:clamp(2.2rem,7vw,3.6rem);line-height:1.1;letter-spacing:-.045em;margin:0 0 1rem}h2{font-size:1.35rem;line-height:1.3;letter-spacing:-.02em;margin:2.7rem 0 1rem;padding-top:1.6rem;border-top:1px solid #ccd5ce}p{margin:0 0 1.15rem}a{color:#08634f;text-underline-offset:.2em}a:hover{text-decoration-thickness:2px}a:focus-visible,[tabindex]:focus-visible{outline:3px solid #8e641d;outline-offset:5px}strong{font-weight:650}ul{padding-left:1.3rem}li{margin:.65rem 0}.table-scroll{max-width:100%;overflow:auto;margin:1.4rem 0}table{border-collapse:collapse;width:100%;font-size:.84rem;line-height:1.45;font-variant-numeric:tabular-nums}th,td{padding:.85rem .65rem;text-align:left;vertical-align:top;border-bottom:1px solid #ccd5ce}th{background:#e4ebe3}td:not(:first-child),th:not(:first-child){text-align:right}td:not(:first-child){white-space:nowrap}caption{text-align:left;color:#4c5e56;font-size:.8rem;padding:.4rem 0}.skip{position:absolute;left:1rem;top:-5rem;padding:.5rem;background:#fff}.skip:focus{top:1rem}.footer{max-width:48rem;margin:auto;padding:0 1.5rem 2rem;color:#4c5e56;font-size:.76rem}.footer a{margin-right:1.2rem}@media(max-width:450px){:root{font-size:17px}main{padding:2rem 1.15rem}h2{margin-top:2rem}th,td{padding:.65rem .35rem}table{font-size:.76rem}.footer{padding:0 1.15rem 2rem}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style></head><body><a class="skip" href="#main">Skip to content</a><main id="main"><h1>Colton Mabery</h1>
+<p><strong>Testing game rules from the player’s side.</strong></p>
+<p>I use AI to investigate how players might use a product differently from what its designers intended, then build tools that make the results inspectable.</p>
+<p>I’m proposing a <strong>two-week paid remote project with Shuffle</strong>, starting with one promotion your team chooses. The work below shows how I approach a question, test it and expose what the answer depends on.</p>
+<p><a href="work/index.html">Open the work sample</a> · <a href="mailto:cmabery@pm.me">Contact me</a></p>
+<h2>What happens when a player reaches a stake limit?</h2>
+<p><strong>Completed simulation and interactive review.</strong></p>
+<p>I compared stake limits across 2,500 simulated Dice sessions. Each player started with $100 and staked 5% of their balance, subject to the cap, for up to 10,000 bets.</p>
+<p>The question was how exposure changes when a player accepts a smaller bet—or leaves after a refusal.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Simulated policy comparison"><table><caption>Recorded simulation · peak profit above the starting deposit</caption><thead><tr>
+<th scope="col">Model policy</th>
+<th scope="col">Largest peak profit</th>
+<th scope="col">99th percentile of peak profit</th>
+</tr></thead><tbody>
+<tr><td>Baseline: $1,000 stake cap</td><td>$38,644</td><td>$2,353</td></tr>
+<tr><td>$100 cap; continue at the permitted stake</td><td>$12,629</td><td>$2,398</td></tr>
+<tr><td>$100 cap; leave when a bet is refused</td><td>$1,997</td><td>$1,921</td></tr>
+</tbody></table></div>
+<p>Peak profit means the player’s highest profit above their starting deposit during a session. Figures are rounded to the nearest dollar.</p>
+<p>Only 35 sessions were affected by the tighter cap. Continuing at the lower stake reduced the largest peak, but slightly increased the 99th percentile. Assuming those players left produced a different result again.</p>
+<p>These are results under a stated model. They do not measure Shuffle customers or establish a recommended live limit. Actual player response is the missing evidence.</p>
+<p><strong><a href="work/limit-study/index.html">Explore the comparison</a>:</strong> switch between the tested policies, inspect the individual simulated wagers behind each policy’s largest peak, and export the evidence.</p>
+<h2>Turn that uncertainty into something measurable</h2>
+<p><strong>Working tool; synthetic demonstration data.</strong></p>
+<p>I built a request-history analyzer to examine what happens after a player encounters a cap. It distinguishes subsequent accepted play, play under a different recorded cap, and an observation window with no subsequent accepted request. Incomplete records remain marked incomplete.</p>
+<p>In the example, changing the window from five to thirty minutes reveals later play that the shorter window misses. You can inspect the events behind the classification.</p>
+<p><strong><a href="work/index.html#investigate">Open the investigation</a>.</strong> Applying it to Shuffle would require mapping an actual export and checking its coverage. The bundled examples are constructed cases; they do not estimate how often customers behave this way.</p>
+<h2>Check the premise, too</h2>
+<p><strong>Historical account records.</strong></p>
+<p>I began by trying to find an advantage in Shuffle.us Dice. I searched <strong>2,988 candidate patterns</strong> in my history. None passed the declared development-and-holdout standard. This was a retrospective study; it did not rule out every small effect.</p>
+<p>Using my own Shuffle.us account history, I regenerated <strong>25,054 revealed rolls</strong> from their recorded seeds. All matched. That verifies those recorded outcomes against the replay calculation; it does not establish how seeds were selected or what was committed before each bet.</p>
+<h2>A first project: one promotion</h2>
+<p>Kingside’s <a href="https://kingside.jobs/40070">sweepstakes CRM listing</a> names wagering requirements, bonus economics and promotion leakage. I’d start with one offer and its intended behavior, agreed with the team.</p>
+<p>Over two weeks, I propose to deliver:</p>
+<ul>
+<li>A runnable model of the rules, with ambiguities and assumptions documented.</li>
+<li>Comparisons of ordinary play, simple automated strategies and AI-assisted strategy search where useful, measuring completion rates and the distribution of player returns and promotion costs.</li>
+<li>A short recommendation: which changes matter, their trade-offs for legitimate players, and what evidence would validate the findings.</li>
+</ul>
+<p>The first pass would use agreed rules and synthetic play. Finding that an offer withstands the tested strategies would also be a useful result.</p>
+<h2>About me</h2>
+<p>I’m 18, based in Arizona, and self-taught. I develop tools and analysis with AI. I can walk through the work, the assumptions and the findings that changed my view.</p>
+<p>I’d like to earn a place on the team through a small piece of useful work. This project would give us a concrete way to evaluate the fit.</p>
+<p><strong><a href="mailto:cmabery@pm.me">Discuss a paid trial</a></strong></p></main><footer class="footer"><a href="work/index.html#evidence">Methods and evidence</a><a href="MANIFEST.json">Package manifest</a></footer></body></html>

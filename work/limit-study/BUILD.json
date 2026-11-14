@@ -1,0 +1,14 @@
+{
+  "schema": "dice-limit-explorer/1",
+  "evidence_sha256": "e6b8f3c3c2983e9d17065dfa681b196957892f266e28aaad908a0e49ca226fff",
+  "index_sha256": "1f6d2f891f9c86c5fc11d018440b04d2cd78cd51a10640ecaf6487827801d2bc",
+  "implementation_sha256": {
+    "README.md": "7da8ac2876f8bab0cbbfc7a294e820151180440fd03df03f90b1d3028003910c",
+    "__init__.py": "b3a64b5dfe9558285762ff6bb1a2cc690c18bc62eab85d7de5e2a39576207e70",
+    "__main__.py": "2f69f1b274a95c2fb7ff6f7489b2e85868994820cd127b086501e364626c1fbf",
+    "app.js": "6e3d88e1a087246e080f2ff6c37627a8e40547bd2b6a7a30c69526becf96f9e7",
+    "build.py": "1f2b33001dc3b3024d451cd262fbf87d9459e8c1e573a46dfbb1dd74a300cbc8",
+    "page.html": "ae2817c61e7cf91319d130e4d7dfed6f9e47ba1903dc210443648ff138a0a6a8",
+    "style.css": "cfd893bc0cd7a486b5f2f51a3e67daf95823ffb7c45d32c2161065ccfeaabfc8"
+  }
+}

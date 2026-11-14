@@ -1,0 +1,60 @@
+{
+  "schema": "colton-work-sample/1",
+  "files": {
+    ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "README.md": "4372ebf6f6c5cd02a0e10830af246b90d1acc565661b4e23742b3d28438c124f",
+    "favicon.ico": "c7557104276937bfbc899ed388412a6c094eea442f068783d8c7228653ab697f",
+    "index.html": "e3f38613042a4e3b4016f26b3d4c2c3f6e2076050cdf49713dd9819d115634f7",
+    "work/INPUT.md": "46da959f35c37f2e8342a1bcebadd5ecac07d649c833d1e7d70b3cc457d8917e",
+    "work/analyzer-core.js": "bda4cdb0a85ca6b68cce462166cf699b32abf090f690b0cdd057f76c06afb071",
+    "work/example.json": "a8fd1db9e8dac5fbce7c4fe5239e5aecddec782fda6ba68cc1657beab3ed6332",
+    "work/historical-checks.json": "eaae1c1c311351c0d64259e14d4c45d35f97ac69f547560368fef30b500f183f",
+    "work/index.html": "a1d16e7229fc5b2fed97d46dc24a87f535dadbd2ffa74a97b6770eb192e6665c",
+    "work/limit-study/BUILD.json": "b8e930cb2fc483681f8c5c674da571d83eb5a2a30d2f583eb616d8e93a1c4133",
+    "work/limit-study/evidence.json": "e6b8f3c3c2983e9d17065dfa681b196957892f266e28aaad908a0e49ca226fff",
+    "work/limit-study/index.html": "1f6d2f891f9c86c5fc11d018440b04d2cd78cd51a10640ecaf6487827801d2bc",
+    "work/review-data.json": "6bfa5ac8f3032ccb523ceb5b310123636ca4c28988553977eadcb159b6290356",
+    "work/sources/historical-checks.md": "64503cfd6152117c51ba60cc577ad31423b04337ca6be6503db118ffc0e1298b",
+    "work/sources/request-input.md": "46da959f35c37f2e8342a1bcebadd5ecac07d649c833d1e7d70b3cc457d8917e",
+    "work/sources/study-method.md": "9fd4ef4c99e7e7083822dd37be06652d9f542fd03813a3fa4352628d2dd0ed86"
+  },
+  "copied_artifacts": {
+    "work/limit-study/index.html": {
+      "source": "dice-review/limit-study/index.html",
+      "sha256": "1f6d2f891f9c86c5fc11d018440b04d2cd78cd51a10640ecaf6487827801d2bc",
+      "treatment": "byte-for-byte copy"
+    },
+    "work/limit-study/evidence.json": {
+      "source": "dice-review/limit-study/evidence.json",
+      "sha256": "e6b8f3c3c2983e9d17065dfa681b196957892f266e28aaad908a0e49ca226fff",
+      "treatment": "byte-for-byte copy"
+    },
+    "work/limit-study/BUILD.json": {
+      "source": "dice-review/limit-study/BUILD.json",
+      "sha256": "b8e930cb2fc483681f8c5c674da571d83eb5a2a30d2f583eb616d8e93a1c4133",
+      "treatment": "byte-for-byte copy"
+    },
+    "work/example.json": {
+      "source": "dice-review/example.json",
+      "sha256": "a8fd1db9e8dac5fbce7c4fe5239e5aecddec782fda6ba68cc1657beab3ed6332",
+      "treatment": "byte-for-byte copy"
+    },
+    "work/INPUT.md": {
+      "source": "dice-review/INPUT.md",
+      "sha256": "46da959f35c37f2e8342a1bcebadd5ecac07d649c833d1e7d70b3cc457d8917e",
+      "treatment": "byte-for-byte copy"
+    },
+    "work/analyzer-core.js": {
+      "source": "dice_review/response.js",
+      "sha256": "bda4cdb0a85ca6b68cce462166cf699b32abf090f690b0cdd057f76c06afb071",
+      "treatment": "byte-for-byte copy"
+    }
+  },
+  "derived_documents": [
+    "work/sources/study-method.md",
+    "work/sources/historical-checks.md",
+    "work/historical-checks.json"
+  ],
+  "scope": "Selected study and analyzer; synthetic interactive inputs, aggregate historical checks, proposed paid project.",
+  "limits": "Integrity identifiers are not certification of live platform behavior."
+}

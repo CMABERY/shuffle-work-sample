@@ -1,0 +1,30 @@
+{
+  "schema":"dice-limit-response/1",
+  "data_origin":"synthetic",
+  "platform":"Constructed walkthrough",
+  "currency":"USD",
+  "currency_decimals":2,
+  "coverage":{"status":"complete","games":"all","from":"2026-01-01T10:00:00Z","until":"2026-01-01T11:00:00Z","basis":"Hand-written fixture covering this one-hour interval. It demonstrates classifications; it measures no actual player behavior."},
+  "events":[
+    {"event_id":"a1","player_id":"example-01","at":"2026-01-01T10:01:00Z","game":"dice","outcome":"limit_refused","requested_stake":"150.00","accepted_stake":"0.00","stake_cap":"100.00"},
+    {"event_id":"a2","player_id":"example-01","at":"2026-01-01T10:01:20Z","game":"dice","outcome":"accepted","requested_stake":"100.00","accepted_stake":"100.00","stake_cap":"100.00"},
+    {"event_id":"a3","player_id":"example-01","at":"2026-01-01T10:01:50Z","game":"dice","outcome":"accepted","requested_stake":"50.00","accepted_stake":"50.00","stake_cap":"100.00"},
+    {"event_id":"b1","player_id":"example-02","at":"2026-01-01T10:02:00Z","game":"dice","outcome":"limit_refused","requested_stake":"120.00","accepted_stake":"0.00","stake_cap":"100.00"},
+    {"event_id":"b2","player_id":"example-02","at":"2026-01-01T10:04:00Z","game":"dice","outcome":"accepted","requested_stake":"20.00","accepted_stake":"20.00","stake_cap":"100.00"},
+    {"event_id":"c1","player_id":"example-03","at":"2026-01-01T10:03:00Z","game":"dice","outcome":"limit_refused","requested_stake":"200.00","accepted_stake":"0.00","stake_cap":"100.00"},
+    {"event_id":"c2","player_id":"example-03","at":"2026-01-01T10:06:00Z","game":"mines","outcome":"accepted","requested_stake":"10.00","accepted_stake":"10.00","stake_cap":"100.00"},
+    {"event_id":"d1","player_id":"example-04","at":"2026-01-01T10:04:00Z","game":"dice","outcome":"limit_refused","requested_stake":"125.00","accepted_stake":"0.00","stake_cap":"100.00"},
+    {"event_id":"e1","player_id":"example-05","at":"2026-01-01T10:05:00Z","game":"dice","outcome":"limit_refused","requested_stake":"150.00","accepted_stake":"0.00","stake_cap":"100.00"},
+    {"event_id":"e2","player_id":"example-05","at":"2026-01-01T10:15:00Z","game":"dice","outcome":"accepted","requested_stake":"150.00","accepted_stake":"150.00","stake_cap":"200.00"},
+    {"event_id":"f1","player_id":"example-06","at":"2026-01-01T10:06:00Z","game":"dice","outcome":"limit_refused","requested_stake":"150.00","accepted_stake":"0.00","stake_cap":"100.00"},
+    {"event_id":"f2","player_id":"example-06","at":"2026-01-01T10:18:00Z","game":"dice","outcome":"accepted","requested_stake":"60.00","accepted_stake":"60.00","stake_cap":"100.00"},
+    {"event_id":"g1","player_id":"example-07","at":"2026-01-01T10:57:00Z","game":"dice","outcome":"limit_refused","requested_stake":"140.00","accepted_stake":"0.00","stake_cap":"100.00"},
+    {"event_id":"h1","player_id":"example-08","at":"2026-01-01T10:08:00Z","game":"dice","outcome":"limit_refused","requested_stake":"160.00","accepted_stake":"0.00","stake_cap":"100.00"},
+    {"event_id":"h2","player_id":"example-08","at":"2026-01-01T10:08:10Z","game":"dice","outcome":"limit_refused","requested_stake":"140.00","accepted_stake":"0.00","stake_cap":"100.00"},
+    {"event_id":"h3","player_id":"example-08","at":"2026-01-01T10:08:20Z","game":"dice","outcome":"other_refused","requested_stake":"90.00","accepted_stake":"0.00","stake_cap":"100.00"},
+    {"event_id":"i1","player_id":"example-09","at":"2026-01-01T10:09:00Z","game":"dice","outcome":"limit_clipped","requested_stake":"130.00","accepted_stake":"100.00","stake_cap":"100.00"},
+    {"event_id":"i2","player_id":"example-09","at":"2026-01-01T10:10:20Z","game":"dice","outcome":"accepted","requested_stake":"80.00","accepted_stake":"80.00","stake_cap":"100.00"},
+    {"event_id":"j1","player_id":"example-10","at":"2026-01-01T10:10:00Z","game":"dice","outcome":"limit_clipped","requested_stake":"110.00","accepted_stake":"100.00","stake_cap":"100.00"},
+    {"event_id":"k1","player_id":"example-11","at":"2026-01-01T10:11:00Z","game":"dice","outcome":"accepted","requested_stake":"5.00","accepted_stake":"5.00","stake_cap":"100.00"}
+  ]
+}

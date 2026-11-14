@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Dice · Limits and recorded behavior</title><style>:root{font:15px/1.55 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#182b29;background:#f5f4ee;--paper:#f5f4ee;--white:#fffefa;--ink:#182b29;--muted:#586762;--line:#d7ded4;--green:#087661;--light:#e4efe5;--amber:#76521c}
+*{box-sizing:border-box}body{margin:0}button,select,input{font:inherit}button,a,select,summary{touch-action:manipulation}button,select{cursor:pointer}button,.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:6px;background:var(--white);color:var(--ink);font-size:.81rem;font-weight:600;text-decoration:none}button:hover,.button:hover{background:var(--light);border-color:var(--green)}button:disabled{opacity:.45;cursor:default}a{color:var(--green);text-underline-offset:3px}button.primary,.primary{background:var(--ink);color:var(--white);border-color:var(--ink)}button.primary:hover{background:var(--green)}.text-button{background:transparent;border:0;padding:0;color:var(--green);text-align:left;justify-content:flex-start}.quiet{background:transparent}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #bd8a31;outline-offset:4px}header,nav,main,footer{max-width:1240px;margin:auto}header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 36px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:11px;font-size:1.4rem;text-decoration:none;color:var(--ink)}.brand strong{font-size:.8rem;letter-spacing:.12em}.brand span{font-size:.7rem;letter-spacing:.08em;color:var(--muted)}.local{font-size:.71rem;color:var(--muted)}nav{display:flex;gap:8px;padding:17px 36px;border-bottom:1px solid var(--line)}nav button{border:0;background:transparent;color:var(--muted);padding:9px 14px;font-size:.72rem;gap:9px}nav button span{font-size:.8rem}nav button[aria-current=page]{background:var(--ink);color:var(--white)}main{padding:0 36px}.view{padding:36px 0 48px}.view[hidden],[hidden]{display:none!important}.eyebrow{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--muted);margin:0 0 14px}h1{font-size:clamp(2.6rem,4.4vw,4rem);line-height:1.07;letter-spacing:-.05em;font-weight:600;margin:0 0 22px}.section-title{font-size:2.5rem;line-height:1.14;margin:0}h2{font-size:1.25rem;letter-spacing:-.025em;font-weight:600;line-height:1.3;margin:0 0 12px}p{margin:0 0 16px}.lede{font-size:1.08rem;line-height:1.7;max-width:570px}.small{font-size:.76rem;line-height:1.65;color:var(--muted)}.intro{display:grid;grid-template-columns:1.4fr 1fr;gap:70px;align-items:center;padding:12px 0 40px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.brief{background:var(--light);padding:27px;border-radius:10px}.stat{font-size:3.5rem;letter-spacing:-.05em;line-height:1.2}.stat span{font-size:1rem;color:var(--muted);letter-spacing:-.02em}.brief>p{font-size:.81rem;margin:10px 0}.split-stat{display:grid;grid-template-columns:1fr 1fr;gap:15px;padding:20px 0;border-top:1px solid #c3d4c5;margin:20px 0 0}.split-stat strong{display:block;font-size:1.8rem;font-weight:550;letter-spacing:-.03em}.split-stat span{display:block;font-size:.75rem;color:var(--muted);line-height:1.5;margin-top:5px}.route{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;border-top:1px solid var(--line);padding-top:30px}.route article{padding:23px;border:1px solid var(--line);border-radius:8px;background:var(--white)}.route .number{display:block;font-size:.7rem;color:var(--green);margin-bottom:18px;font-weight:600}.route p{font-size:.85rem;color:var(--muted)}.route a,.route button{font-size:.79rem;font-weight:600}.decision-note{display:grid;grid-template-columns:.8fr 1.5fr;gap:50px;padding:28px 0 0;border-top:1px solid var(--line);margin-top:34px}.decision-note h2{font-size:1.14rem}.decision-note p{font-size:.86rem;color:var(--muted);margin:0;line-height:1.7}.section-heading{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-bottom:25px}.section-heading>button{flex-shrink:0}.evidence-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.evidence-grid article{background:var(--white);padding:25px;border:1px solid var(--line);border-radius:8px}.tag{display:inline-block;padding:4px 8px;background:var(--light);font-size:.66rem;color:var(--green);border-radius:4px;margin-bottom:15px;font-weight:600}.evidence-grid p{font-size:.86rem;line-height:1.7}.evidence-grid .implication{font-size:.78rem;color:var(--muted);border-left:2px solid #b7cbb6;padding-left:13px}.evidence-grid button,.evidence-grid a{font-size:.75rem;margin:5px 8px 0 0}.source-library{margin:28px 0 0;border-top:1px solid var(--line);padding-top:20px}summary{cursor:pointer;font-size:.84rem;font-weight:600}#source-library{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-top:18px}#source-library button{justify-content:flex-start;text-align:left;overflow-wrap:anywhere}.origin{background:#f3ebce;border:1px solid #dfd1a0;border-radius:7px;padding:15px 18px;font-size:.86rem;line-height:1.65;margin-bottom:17px}.origin.export{background:var(--light);border-color:#c7d9c7}.input-actions{display:flex;align-items:center;flex-wrap:wrap;gap:13px;margin-bottom:13px}.input-actions a,.input-actions .text-button{font-size:.76rem}.file-label{position:relative;overflow:hidden;cursor:pointer}.file-label input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}.file-label:focus-within{outline:3px solid #bd8a31;outline-offset:4px}.error{background:#fae9df;border:1px solid #d6a28e;padding:16px;border-radius:7px;font-size:.83rem;margin:18px 0;overflow-wrap:anywhere}.controls{display:flex;align-items:flex-end;gap:22px;padding:18px 20px;border:1px solid var(--line);border-radius:8px;background:#eaece4;margin-top:18px}.controls label,.cohort-heading label{display:flex;flex-direction:column;gap:7px;font-size:.73rem;font-weight:600;min-width:155px}select{max-width:100%;padding:10px 30px 10px 10px;color:var(--ink);background:var(--white);border:1px solid #b9c8bc;border-radius:5px;font-size:.8rem}.controls p{font-size:.76rem;color:var(--muted);margin:0 0 2px;max-width:270px}.summary-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;margin:20px 0}.summary-cards article{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:20px;min-width:0}.summary-cards p{font-size:.74rem;color:var(--muted);margin:0 0 9px}.summary-cards strong{font-size:2rem;font-weight:550;letter-spacing:-.035em;font-variant-numeric:tabular-nums;display:block;overflow-wrap:anywhere}.summary-cards span{display:block;font-size:.72rem;color:var(--muted);margin-top:7px;line-height:1.6}.result-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:22px}.classifications,.reading{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:23px}.classifications h2{font-size:1.08rem}.category{display:block;width:100%;text-align:left;background:transparent;border:0;border-radius:3px;padding:10px 0;position:relative}.category-header{display:flex;justify-content:space-between;gap:12px;font-size:.77rem;font-weight:500;margin-bottom:7px}.category-header span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--muted)}.category-track{width:100%;background:#edf0e9;height:6px;overflow:hidden;border-radius:2px}.category-fill{height:100%;background:#3f8372}.category[data-category=no_accepted] .category-fill{background:#9ba79e}.category[data-category=incomplete] .category-fill{background:#b68b3e}.category:hover{background:#f1f5eb}.reading{background:var(--light);border-color:#cddccc}.reading>p:not(.eyebrow){font-size:.81rem;line-height:1.7}.reading h2{font-size:1.25rem}.reading details{border-top:1px solid #c3d4c5;padding-top:13px;margin-top:20px}.reading details p{font-size:.74rem;overflow-wrap:anywhere;margin:12px 0 0}.cohort-heading{margin-top:32px;align-items:flex-end}.cohort-heading h2{margin:0}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--white)}table{width:100%;border-collapse:collapse;font-size:.76rem;font-variant-numeric:tabular-nums}caption{text-align:left;font-size:.72rem;color:var(--muted);padding:13px}th{text-align:left;background:#ebeee5;font-size:.69rem;font-weight:600;white-space:nowrap}td,th{padding:12px;border-bottom:1px solid var(--line)}td{vertical-align:top}td button{padding:2px 0;border:0;border-radius:0;background:transparent;color:var(--green);text-decoration:underline;font-size:.76rem;overflow-wrap:anywhere;text-align:left}tr.selected{background:#e7efe3}td .sub{display:block;font-size:.66rem;color:var(--muted);margin-top:3px}td:last-child{white-space:nowrap}.pagination{display:flex;align-items:center;justify-content:flex-end;gap:15px;margin-top:12px;font-size:.73rem;color:var(--muted)}.pagination button{padding:7px 10px;font-size:.71rem}.event-detail{margin-top:25px;border:1px solid #b9cfba;border-radius:8px;padding:23px;background:#edf2e9;scroll-margin-top:15px}.event-detail .section-heading{margin-bottom:16px}.event-detail h2{font-size:1.2rem;overflow-wrap:anywhere}.event-detail>p:not(.small){font-size:.84rem;line-height:1.65}.event-detail th,.event-detail td{font-size:.71rem}.event-detail td:first-child{max-width:180px;overflow-wrap:anywhere}.event-detail td:nth-child(2){white-space:nowrap}.method{border-top:1px solid var(--line);margin-top:24px;padding-top:18px}.method p{font-size:.78rem;color:var(--muted);line-height:1.7;margin:15px 0 0}.hash{font:11px/1.65 ui-monospace,monospace;overflow-wrap:anywhere;color:var(--muted)}footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:23px 36px;color:var(--muted);font-size:.66rem}footer span:first-child{letter-spacing:.06em;font-weight:600}dialog{color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:25px;max-width:min(1000px,94vw);width:100%;max-height:90vh}dialog::backdrop{background:#172a29a8}.dialog-header{display:flex;align-items:center;justify-content:space-between;gap:20px}.dialog-header h2{font-size:1.05rem;overflow-wrap:anywhere}.dialog-header button{flex-shrink:0}.dialog-header .eyebrow{margin-bottom:6px}dialog pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--white);padding:20px;border:1px solid var(--line);border-radius:6px;font:12px/1.7 ui-monospace,monospace}noscript{display:block;padding:20px;background:#f3ebce}
+@media(max-width:950px){.intro{gap:30px}.controls{flex-wrap:wrap}.controls p{max-width:none;flex:1}.summary-cards strong{font-size:1.6rem}.section-title{font-size:2.1rem}.result-grid{grid-template-columns:1fr 1fr}.route{gap:12px}.route article{padding:19px}}
+@media(max-width:700px){header{padding:18px 20px}.brand span{display:none}.local{font-size:.66rem}nav{padding:12px 15px;gap:3px;justify-content:space-between}nav button{padding:8px 7px;gap:5px;font-size:.64rem}nav button span{font-size:.7rem}main{padding:0 20px}.view{padding:28px 0 32px}.intro{grid-template-columns:1fr;gap:25px;padding-top:0}.intro h1{font-size:3.15rem}.lede{font-size:.98rem}.actions{margin-top:20px}.actions>*{width:100%}.brief{padding:23px}.stat{font-size:2.9rem}.route{grid-template-columns:1fr;padding-top:25px}.route article{padding:22px}.route .number{margin-bottom:10px}.decision-note{grid-template-columns:1fr;gap:8px;margin-top:25px}.decision-note h2{margin-bottom:5px}.section-heading{flex-direction:column;align-items:flex-start;gap:18px}.section-title{font-size:2rem}.evidence-grid{grid-template-columns:1fr;gap:15px}.evidence-grid article{padding:20px}#source-library{grid-template-columns:1fr}.input-actions{gap:10px}.input-actions .button,.input-actions button{font-size:.75rem}.origin{padding:13px 15px;font-size:.8rem}.controls{display:block;padding:16px}.controls label{margin-bottom:13px}.controls p{font-size:.72rem;margin-top:4px}.summary-cards{grid-template-columns:1fr 1fr;gap:10px}.summary-cards article{padding:15px}.summary-cards article:last-child{grid-column:1/-1}.summary-cards p{font-size:.68rem}.summary-cards strong{font-size:1.7rem}.summary-cards span{font-size:.68rem}.result-grid{grid-template-columns:1fr;gap:15px}.classifications,.reading{padding:19px}.category-header{font-size:.73rem}.cohort-heading{align-items:stretch;margin-top:26px}.table-wrap table{min-width:620px}.event-detail{padding:16px}.event-detail .table-wrap table{min-width:670px}.event-detail .section-heading{gap:12px}.event-detail .section-heading>button{font-size:.71rem}.pagination{gap:8px;justify-content:space-between}.pagination button{font-size:.65rem}.pagination span{font-size:.67rem}footer{padding:20px;flex-direction:column;gap:7px}.dialog-header{align-items:flex-start}dialog{padding:17px}dialog pre{padding:12px;font-size:11px}.dialog-header h2{font-size:.9rem}.hash{font-size:10px}}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style></head>
+<body>
+<header><a href="#start" class="brand">⠿ <strong>DICE</strong><span>/ FROM FINDING TO DECISION</span></a><span class="local"><a href="../index.html">About this work</a></span></header>
+<nav aria-label="Review stages"><button data-view="start" aria-current="page">01 <span>Start here</span></button><button data-view="evidence">02 <span>Follow the evidence</span></button><button data-view="investigate">03 <span>Investigate</span></button></nav>
+<main>
+<section id="view-start" class="view" aria-labelledby="start-title">
+  <div class="intro"><div><p class="eyebrow">Recorded simulation · working investigation tool</p><h1 id="start-title">What happens<br>after the limit?</h1><p class="lede">Explore how a stake cap changes simulated exposure. Then inspect a tool for measuring the behavior that the simulation assumes.</p><div class="actions"><a href="limit-study/index.html" class="button primary">Explore the limit study →</a><button data-go="investigate">Open the request analyzer →</button></div></div><aside class="brief"><p class="eyebrow">The completed comparison</p><div class="stat">35 <span>of 2,500 sessions</span></div><p>were affected by the tighter $100 stake cap.</p><p>The largest peak player profit fell from $38,644 to $12,629 when players continued at the cap, or $1,997 when they left after refusal.</p><p class="small">The continuing policy slightly raised the 99th percentile, from $2,353 to $2,398. These are simulated results; player responses are assumptions.</p></aside></div>
+  <div class="route"><article><span class="number">01</span><h2>Inspect a result</h2><p>Compare three saved policies and follow each maximum to its individual wagers.</p><a href="limit-study/index.html">Explore the study →</a></article><article><span class="number">02</span><h2>Understand its scope</h2><p>Read the model assumptions and separate historical account checks from simulations.</p><button class="text-button" data-go="evidence">Read the evidence →</button></article><article><span class="number">03</span><h2>Measure the next question</h2><p>Vary an observation window and inspect the events behind the analyzer's classifications.</p><button class="text-button" data-go="investigate">Open the investigation →</button></article></div>
+  <div class="decision-note"><h2>What this work establishes</h2><p>The study demonstrates consequences under explicit assumptions. The analyzer works with its documented input format and a synthetic example. Applying it to real customers requires a mapped export and evidence of coverage.</p></div>
+</section>
+<section id="view-evidence" class="view" hidden aria-labelledby="evidence-title">
+  <div class="section-heading"><div><p class="eyebrow">Separate the evidence by what it establishes</p><h1 class="section-title" id="evidence-title">Methods, results and limits</h1></div><button class="primary" data-go="investigate">Open the analyzer →</button></div>
+  <div class="evidence-grid">
+    <article><span class="tag">Recorded simulation</span><h2>A smaller maximum is one result.</h2><p>The $100 cap lowers the sample maximum while the continuing policy slightly raises the 99th percentile. The full traces show why individual sessions differ.</p><p class="implication">Compare the distribution and the session mechanics before selecting a policy.</p><button data-source="study-method.md">Read the study method</button><a href="limit-study/index.html">Inspect the sessions →</a></article>
+    <article><span class="tag">Working analyzer · synthetic example</span><h2>Missing activity needs coverage.</h2><p>A longer window reveals a delayed accepted request. An export ending too soon leaves the follow-up incomplete. Neither absence nor incompleteness proves that the player left.</p><p class="implication">The input contract states what a real export must establish.</p><button data-source="request-input.md">Read the input contract</button><button data-go="investigate">Inspect the example</button></article>
+    <article><span class="tag">Historical account analysis</span><h2>Check the starting hypothesis.</h2><p>All 25,054 revealed outcomes matched replay. A 2,988-candidate search produced no pattern passing its declared development-and-holdout standard.</p><p class="implication">The search was retrospective and had limited power for small effects. Replay does not establish how seeds were selected or what was published before a bet.</p><button data-source="historical-checks.md">Read the result and limitations</button><a href="historical-checks.json" download>Download aggregate check record</a></article>
+  </div>
+  <details class="source-library"><summary>Included method documents</summary><div id="source-library"></div></details>
+</section>
+  <section id="view-investigate" class="view" hidden aria-labelledby="investigate-title">
+    <div class="section-heading"><div><p class="eyebrow">A working investigation you can inspect</p><h1 class="section-title" id="investigate-title">After a limit encounter,<br>what is recorded next?</h1></div><button id="export-result" class="quiet">Export this investigation ↗</button></div>
+    <div id="origin" class="origin" role="status"></div>
+    <div class="input-actions"><label class="button file-label" for="input-file">Open a request export<input id="input-file" type="file" accept=".json,application/json"></label><button id="load-example">Restore walkthrough</button><a href="example.json" download>Download example input</a><button class="text-button" data-source="request-input.md">Input guide</button></div>
+    <div id="input-error" class="error" role="alert" hidden></div>
+    <p id="input-status" class="small"></p>
+    <div class="controls"><label for="window">Follow-up window<select id="window"><option value="1">1 minute</option><option value="5" selected>5 minutes</option><option value="30">30 minutes</option><option value="60">60 minutes</option></select></label><label for="encounters">First encounter per player<select id="encounters"><option value="all">Refused or clipped request</option><option value="refused">Refused request only</option></select></label><p>Change the measurement definition. Every result below is computed from the loaded events.</p></div>
+    <div id="analysis" hidden>
+      <div class="summary-cards"><article><p>Players with a qualifying encounter</p><strong id="cohort-total"></strong><span id="denominator"></span></article><article><p>Windows with declared full coverage</p><strong id="covered-total"></strong><span>Across all games, through the chosen deadline.</span></article><article><p>Recorded follow-up turnover</p><strong id="turnover"></strong><span>Sum of subsequent accepted stakes. This is not profit.</span></article></div>
+      <div class="result-grid"><article class="classifications"><h2>Next recorded accepted request</h2><p class="small">One classification per player. Percentages include incomplete follow-up in the denominator.</p><div id="category-bars"></div></article><aside class="reading"><p class="eyebrow">How to read this result</p><h2 id="reading-title"></h2><p id="reading-text"></p><p class="small">An accepted request is positive evidence of activity. A covered period with no accepted request establishes only that absence in this export; it does not prove departure or causation.</p><details><summary>Coverage supplied with this file</summary><p id="coverage-description"></p><p id="coverage-basis"></p></details></aside></div>
+      <div class="section-heading cohort-heading"><div><p class="eyebrow">Follow a classification to its source</p><h2>Which events produced that answer?</h2></div><label for="filter">Show<select id="filter"><option value="all">All classifications</option></select></label></div>
+      <div class="table-wrap"><table><caption id="cohort-caption"></caption><thead><tr><th>Player</th><th>First encounter</th><th>Next recorded activity</th><th>Covered window</th><th>Follow-up turnover</th></tr></thead><tbody id="cohort-rows"></tbody></table></div>
+      <div class="pagination"><button id="page-prev">Previous 25</button><span id="page-position"></span><button id="page-next">Next 25</button></div>
+      <article id="event-detail" class="event-detail" hidden tabindex="-1"><div class="section-heading"><div><p class="eyebrow">The source path</p><h2 id="detail-title"></h2></div><button id="export-path">Export this player’s evidence ↗</button></div><p id="detail-explanation"></p><p id="detail-coverage" class="small"></p><div class="table-wrap"><table><thead><tr><th>Source event</th><th>Time</th><th>Game / outcome</th><th>Requested</th><th>Accepted</th><th>Stake cap</th></tr></thead><tbody id="event-rows"></tbody></table></div><p id="detail-truncation" class="small"></p></article>
+      <details class="method"><summary>Definition, source identity and interpretation</summary><p id="method-text"></p><p id="interval-text"></p><p class="small">Equal timestamps need source sequence values. Identical duplicates are counted once; conflicting requests block analysis. Monetary totals use integer units at the declared currency precision.</p><p id="source-digest" class="hash"></p></details>
+    </div>
+    <div class="decision-note"><h2>The result should sharpen the next decision.</h2><p>Use actual mapped records to establish which behavior is observed, how sensitive the description is to the time window, and where evidence ends. That can inform a subsequent comparison or experiment; it does not establish what a new cap would cause.</p></div>
+  </section>
+</main>
+<footer><span>DICE / RESEARCH + WORKING TOOLS</span><span>Inspect a finding. Change an assumption. Follow the evidence.</span></footer>
+<dialog id="source-dialog"><div class="dialog-header"><div><p class="eyebrow">Method document</p><h2 id="source-title"></h2></div><button id="close-source" aria-label="Close source document">Close ×</button></div><p id="source-hash" class="hash"></p><pre id="source-text"></pre></dialog>
+<noscript>Enable JavaScript to browse sources and analyze the local export. The linked study and source files are included in this package.</noscript>
+<script type="application/json" id="review-data">{"schema":"dice-review-public/1","sources":[{"path":"study-method.md","text":"# Reading the limit study\n\nThis note describes the saved study displayed in the explorer. It is a reader's\nguide, not a new experiment. The full numerical evidence and selected session\ntraces are included in `work/limit-study/evidence.json`.\n\n## Model and comparison\n\nThe selected cell is `fixed_10k_unit10c/balance_fraction_5pct`: 2,500 simulated\nplayers, each starting with $100, requesting 5% of current balance per bet,\nsubject to the selected stake cap, for up to 10,000 bets. The displayed win\nchance is 49.50%. The frozen dice-v1 model uses raw-byte seeds, strict roll\ncomparisons and settlement floored to one millionth of a dollar. It is distinct\nfrom the implementation used to replay historical Shuffle account records.\n\nThree saved policies are displayed:\n\n- `v1`: the model's $1,000 stake cap.\n- `s100/clip`: a $100 cap; reduce an over-cap request and continue.\n- `s100/stop`: a $100 cap; refuse the over-cap request and end the session.\n\nThe two tighter-cap policies affect 35 of 2,500 sessions. They are behavioral\nscenarios, not measured proportions of customers who continue or leave.\n\n| Policy | Largest peak player profit | 99th percentile | Maximum's session |\n| --- | ---: | ---: | ---: |\n| v1 | $38,644.03 | $2,352.64 | 2286 |\n| s100/clip | $12,628.64 | $2,398.43 | 309 |\n| s100/stop | $1,996.65 | $1,921.16 | 1649 |\n\nPeak player profit is the maximum profit above the initial deposit during a\nsession. It is not ending profit, total balance or required capital for the\nwhole business. The continuing policy lowers the largest observed peak while\nslightly increasing the 99th percentile. A sample maximum is not a future bound.\n\nThe explorer also separates realized house earnings from the sum of conditional\nexpected earnings over accepted stakes. The latter depends on the simulated\npaths and resulting turnover. Neither is a forecast of Shuffle revenue, and\nneither includes operating costs.\n\n## What can be inspected\n\nThe aggregate figures come from the completed study. The explorer's existing\nbuild reconstructed three original shards containing the selected extremes\n(150 sessions) and checked their hashes and ledger totals. It then retained\nnine traces: all three policies for sessions 2286, 309 and 1649.\n\nThe public package copies that explorer, its evidence and build record without\nchanging their bytes. It does not rerun the aggregate study or introduce new\nseeds. Switch policy, inspect the corresponding maximum, follow a cap event,\nand export the comparison or full simulated session ledger.\n\n## What remains unestablished\n\nThe assumed limits are not confirmed live limits. Real player responses,\npromotion behavior, commercial demand and causal effects have not been measured.\nThe model's currency precision, seed encoding and other rules should not be\ntreated as a description of Shuffle's current deployment.\n\nThe request-history analyzer supplies a next measurement step using a separate\nsynthetic example. Its normalized input contract is included as `work/INPUT.md`.\nActual use requires mapping a real export and checking its declared coverage.\n","sha256":"9fd4ef4c99e7e7083822dd37be06652d9f542fd03813a3fa4352628d2dd0ed86"},{"path":"request-input.md","text":"# Request export contract\n\nThe response analyzer accepts one JSON bundle in `dice-limit-response/1` format.\nIt is an application-owned normalized format, not a native Shuffle export or an\nautomatic platform connection. `example.json` is a complete synthetic example.\nMap existing exported fields to this contract while retaining source identifiers.\nThe browser reads the selected local file; it makes no upload or network request.\n\nRequired top-level fields:\n\n- `schema`: `dice-limit-response/1`.\n- `data_origin`: `synthetic` or `export`. This is a supplied label, not authentication.\n- `platform`: source name; `currency`: one currency code; `currency_decimals`: 0–8.\n  Do not mix currencies or convert them without a separate sourced valuation.\n- `coverage`: `status` (`complete`, `partial`, `unknown`), `games` (`all`,\n  `dice_only`), `from`, `until`, and a nonempty `basis` explaining the declaration.\n  All records must lie in the half-open interval `[from, until)`.\n- `events`: at most 200,000 immutable request events. Outcome revisions must be\n  resolved by the exporter with their original evidence; conflicting versions\n  of one request are not silently selected here.\n\nEach event requires `event_id`, `player_id`, `at`, `game`, `outcome`,\n`requested_stake`, `accepted_stake`, and `stake_cap`.\n\nTimestamps include a timezone and have at most millisecond precision. Events\nwith equal timestamps for one player need distinct optional `sequence` values\nfrom a source that establishes their order. Array position is not proof of order.\nIDs are scoped to one player in this single-platform bundle. Byte-equivalent or\nsemantically identical duplicate requests are counted once and retain all input\nevent references. Conflicting copies block analysis.\n\nMoney is unsigned decimal text at the declared precision; floating-point JSON\nnumbers, exponent notation, silent rounding and mixed currencies are rejected.\nThe analysis uses integer units. `accepted_stake` means the amount actually\nadmitted, not a payout or net result. The cap must be the effective stake cap for\nthat request, not the current policy applied retrospectively.\n\n| Outcome | Required relationship |\n| --- | --- |\n| `accepted` | Positive requested stake equals accepted stake and does not exceed the cap. |\n| `limit_clipped` | Request exceeds the stake cap; accepted stake equals that cap. |\n| `limit_refused` | Request exceeds the stake cap; accepted stake is zero. |\n| `other_refused` | Accepted stake is zero; this event does not create a limit encounter. |\n\nThis first version concerns stake caps. Do not map payout-limit refusals,\ninsufficient funds, responsible-gambling restrictions or arbitrary errors to\n`limit_refused` unless the source actually establishes this stake-cap condition.\n\n## What the analyzer computes\n\nOne cohort member per player: the first qualifying Dice limit encounter in the\nsupplied interval. The user can include both refusals and clipping, or refusals\nonly. This is not the player's first lifetime encounter and not a per-request\nresponse rate. Repeated requests by one player do not inflate the denominator.\n\nFor a selected number of minutes after that encounter, inspect subsequent\nrequests in source order and strictly before `encounter time + window`.\nThe first subsequent accepted record determines the activity category: Dice\nunder the same cap, Dice under a changed cap, or another game. The first clipped\nrequest itself is excluded from follow-up turnover. All later accepted stakes\ninside the window are summed, across games, in the single declared currency.\n\nA window is covered only if input coverage is declared complete across all\ngames and the export extends to its terminal boundary. With no accepted record,\nan uncovered window is **Follow-up incomplete**. A covered window can establish\nonly **No accepted bet observed**. It does not establish departure, intent,\ncausation or the reason for inactivity. Even positive categories describe the\nnext recorded accepted request; partial data may omit earlier activity.\nEvery percentage uses all cohort players, including incomplete follow-up.\n\nThe output preserves assumptions, coverage, source-event references and the\noriginal input's SHA256. It does not estimate a treatment effect, simulate a new\npolicy, predict lifetime value, calculate realized casino profit, or validate\nthe authenticity/completeness of an export. A real evaluation would require\nactual mapped records and a comparison design agreed before evaluating outcomes.\n","sha256":"46da959f35c37f2e8342a1bcebadd5ecac07d649c833d1e7d70b3cc457d8917e"},{"path":"historical-checks.md","text":"# Historical Dice checks: scope and result\n\nThese checks use the author's retained Shuffle.us account history. They are\nseparate from the simulated sessions in the limit explorer and the constructed\nrequests in the analyzer. The public package contains aggregate findings only.\n\n## Outcome replay\n\nOn 13 November 2026, a local recheck reproduced all 25,054 revealed outcomes,\nwith zero recorded-seed-hash, HMAC-digest or displayed-outcome mismatches.\nThe 819 outcomes whose server seeds were unrevealed were not replayed.\n\nMatching replay establishes consistency of those records with that calculation.\nIt does not establish prior publication of commitments, unbiased seed selection,\nindependence of outcomes, source authenticity, or completeness outside the export.\n\n## Candidate-pattern search\n\nThe original search considered 2,988 candidates, including 996 next-roll\ndefinitions. It covered streaks, recent ratios, cumulative deviations, momentum,\nalternation and oriented raw-roll means across specified populations, history\ndefinitions, directions and horizons.\n\nThirty-four development selections were frozen before the original holdout\nevaluation. None passed the declared two-stage criterion. The primary\nwhole-search development p-value was 0.5552 and the selection-adjusted holdout\np-value was 0.0571. A prespecified joint diagnostic of 0.0255 remains a suggestive\nresult; it was not the finding criterion and cannot replace it after the fact.\n\nThe archive had already been explored in earlier work, so this is retrospective\nanalysis, not prospective replication. The next-20-outcome diagnostic used\noverlapping windows: 113 holdout triggers covered 239 distinct future rolls.\nIt did not trigger during the remembered recovery episode. Later exploratory\nextensions followed inspection of the holdout and are not fresh validation.\n\nPower was weak for small advantages. The result establishes no validated\npredictive signal; it does not exclude every small effect or prove that no\nstrategy could ever find one. The public summary does not describe 2,988\nindependent prospective tests.\n\nAggregate counts and source-document identities are recorded in\n`work/historical-checks.json`. Raw account records are not bundled.\n","sha256":"64503cfd6152117c51ba60cc577ad31423b04337ca6be6503db118ffc0e1298b"}],"example_text":"{\n  \"schema\":\"dice-limit-response/1\",\n  \"data_origin\":\"synthetic\",\n  \"platform\":\"Constructed walkthrough\",\n  \"currency\":\"USD\",\n  \"currency_decimals\":2,\n  \"coverage\":{\"status\":\"complete\",\"games\":\"all\",\"from\":\"2026-01-01T10:00:00Z\",\"until\":\"2026-01-01T11:00:00Z\",\"basis\":\"Hand-written fixture covering this one-hour interval. It demonstrates classifications; it measures no actual player behavior.\"},\n  \"events\":[\n    {\"event_id\":\"a1\",\"player_id\":\"example-01\",\"at\":\"2026-01-01T10:01:00Z\",\"game\":\"dice\",\"outcome\":\"limit_refused\",\"requested_stake\":\"150.00\",\"accepted_stake\":\"0.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"a2\",\"player_id\":\"example-01\",\"at\":\"2026-01-01T10:01:20Z\",\"game\":\"dice\",\"outcome\":\"accepted\",\"requested_stake\":\"100.00\",\"accepted_stake\":\"100.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"a3\",\"player_id\":\"example-01\",\"at\":\"2026-01-01T10:01:50Z\",\"game\":\"dice\",\"outcome\":\"accepted\",\"requested_stake\":\"50.00\",\"accepted_stake\":\"50.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"b1\",\"player_id\":\"example-02\",\"at\":\"2026-01-01T10:02:00Z\",\"game\":\"dice\",\"outcome\":\"limit_refused\",\"requested_stake\":\"120.00\",\"accepted_stake\":\"0.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"b2\",\"player_id\":\"example-02\",\"at\":\"2026-01-01T10:04:00Z\",\"game\":\"dice\",\"outcome\":\"accepted\",\"requested_stake\":\"20.00\",\"accepted_stake\":\"20.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"c1\",\"player_id\":\"example-03\",\"at\":\"2026-01-01T10:03:00Z\",\"game\":\"dice\",\"outcome\":\"limit_refused\",\"requested_stake\":\"200.00\",\"accepted_stake\":\"0.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"c2\",\"player_id\":\"example-03\",\"at\":\"2026-01-01T10:06:00Z\",\"game\":\"mines\",\"outcome\":\"accepted\",\"requested_stake\":\"10.00\",\"accepted_stake\":\"10.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"d1\",\"player_id\":\"example-04\",\"at\":\"2026-01-01T10:04:00Z\",\"game\":\"dice\",\"outcome\":\"limit_refused\",\"requested_stake\":\"125.00\",\"accepted_stake\":\"0.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"e1\",\"player_id\":\"example-05\",\"at\":\"2026-01-01T10:05:00Z\",\"game\":\"dice\",\"outcome\":\"limit_refused\",\"requested_stake\":\"150.00\",\"accepted_stake\":\"0.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"e2\",\"player_id\":\"example-05\",\"at\":\"2026-01-01T10:15:00Z\",\"game\":\"dice\",\"outcome\":\"accepted\",\"requested_stake\":\"150.00\",\"accepted_stake\":\"150.00\",\"stake_cap\":\"200.00\"},\n    {\"event_id\":\"f1\",\"player_id\":\"example-06\",\"at\":\"2026-01-01T10:06:00Z\",\"game\":\"dice\",\"outcome\":\"limit_refused\",\"requested_stake\":\"150.00\",\"accepted_stake\":\"0.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"f2\",\"player_id\":\"example-06\",\"at\":\"2026-01-01T10:18:00Z\",\"game\":\"dice\",\"outcome\":\"accepted\",\"requested_stake\":\"60.00\",\"accepted_stake\":\"60.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"g1\",\"player_id\":\"example-07\",\"at\":\"2026-01-01T10:57:00Z\",\"game\":\"dice\",\"outcome\":\"limit_refused\",\"requested_stake\":\"140.00\",\"accepted_stake\":\"0.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"h1\",\"player_id\":\"example-08\",\"at\":\"2026-01-01T10:08:00Z\",\"game\":\"dice\",\"outcome\":\"limit_refused\",\"requested_stake\":\"160.00\",\"accepted_stake\":\"0.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"h2\",\"player_id\":\"example-08\",\"at\":\"2026-01-01T10:08:10Z\",\"game\":\"dice\",\"outcome\":\"limit_refused\",\"requested_stake\":\"140.00\",\"accepted_stake\":\"0.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"h3\",\"player_id\":\"example-08\",\"at\":\"2026-01-01T10:08:20Z\",\"game\":\"dice\",\"outcome\":\"other_refused\",\"requested_stake\":\"90.00\",\"accepted_stake\":\"0.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"i1\",\"player_id\":\"example-09\",\"at\":\"2026-01-01T10:09:00Z\",\"game\":\"dice\",\"outcome\":\"limit_clipped\",\"requested_stake\":\"130.00\",\"accepted_stake\":\"100.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"i2\",\"player_id\":\"example-09\",\"at\":\"2026-01-01T10:10:20Z\",\"game\":\"dice\",\"outcome\":\"accepted\",\"requested_stake\":\"80.00\",\"accepted_stake\":\"80.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"j1\",\"player_id\":\"example-10\",\"at\":\"2026-01-01T10:10:00Z\",\"game\":\"dice\",\"outcome\":\"limit_clipped\",\"requested_stake\":\"110.00\",\"accepted_stake\":\"100.00\",\"stake_cap\":\"100.00\"},\n    {\"event_id\":\"k1\",\"player_id\":\"example-11\",\"at\":\"2026-01-01T10:11:00Z\",\"game\":\"dice\",\"outcome\":\"accepted\",\"requested_stake\":\"5.00\",\"accepted_stake\":\"5.00\",\"stake_cap\":\"100.00\"}\n  ]\n}\n"}</script><script>/* Shared by the offline page and Node tests. All monetary accounting is integer. */
+(function(root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.DiceResponse = api;
+})(globalThis, function() {
+  'use strict';
+  const SCHEMA = 'dice-limit-response/1';
+  const categories = {
+    dice: 'Dice again · same cap',
+    changed_cap: 'Dice again · different cap',
+    other_game: 'Another game recorded',
+    no_accepted: 'No accepted bet observed',
+    incomplete: 'Follow-up incomplete',
+  };
+  function fail(message) { throw new Error(message); }
+  function string(value, name) {
+    if (typeof value !== 'string' || !value.trim() || value.length > 1000) fail(`${name}: a nonempty string of at most 1,000 characters is required.`);
+    return value;
+  }
+  function timestamp(value, name) {
+    const match = typeof value === 'string' && value.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d{1,3})?(Z|[+-]\d{2}:\d{2})$/);
+    if (!match) fail(`${name}: use an ISO timestamp with timezone and at most millisecond precision.`);
+    const [,year,month,day,hour,minute,second,zone] = match;
+    const days = new Date(Date.UTC(Number(year),Number(month),0)).getUTCDate();
+    if (Number(month)<1 || Number(month)>12 || Number(day)<1 || Number(day)>days || Number(hour)>23 || Number(minute)>59 || Number(second)>59 ||
+      (zone!=='Z' && (Number(zone.slice(1,3))>23 || Number(zone.slice(4,6))>59))) fail(`${name}: invalid calendar timestamp.`);
+    const parsed = Date.parse(value);
+    if (!Number.isFinite(parsed)) fail(`${name}: invalid timestamp.`);
+    return parsed;
+  }
+  function units(value, decimals, name) {
+    if (typeof value !== 'string' || !/^\d+(?:\.\d+)?$/.test(value) || value.length>40) fail(`${name}: use unsigned decimal text, without exponents or commas.`);
+    const [whole, fraction=''] = value.split('.');
+    if (fraction.length>decimals) fail(`${name}: exceeds the declared currency precision.`);
+    return BigInt(whole) * 10n ** BigInt(decimals) + BigInt(fraction.padEnd(decimals,'0') || '0');
+  }
+  function decimal(value, decimals) {
+    const amount = BigInt(value), scale = 10n ** BigInt(decimals);
+    const sign = amount<0n?'-':'';
+    const n=amount<0n?-amount:amount;
+    return sign + String(n/scale) + (decimals ? '.' + String(n%scale).padStart(decimals,'0') : '');
+  }
+  function normalize(input) {
+    if (!input || input.schema!==SCHEMA) fail(`Expected schema ${SCHEMA}. Download the example to see the input format.`);
+    if (!['synthetic','export'].includes(input.data_origin)) fail('data_origin must be synthetic or export.');
+    const platform=string(input.platform,'platform'), currency=string(input.currency,'currency');
+    if (!/^[A-Z][A-Z0-9]{2,11}$/.test(currency)) fail('currency: use a currency code, such as USD.');
+    const decimals=input.currency_decimals;
+    if (!Number.isInteger(decimals) || decimals<0 || decimals>8) fail('currency_decimals must be an integer from 0 to 8.');
+    const cov=input.coverage;
+    if (!cov || !['complete','partial','unknown'].includes(cov.status) || !['all','dice_only'].includes(cov.games)) fail('coverage requires status (complete, partial, unknown) and games (all, dice_only).');
+    const from=timestamp(cov.from,'coverage.from'), until=timestamp(cov.until,'coverage.until');
+    if (from>=until) fail('coverage.until must be later than coverage.from.');
+    string(cov.basis,'coverage.basis');
+    if (!Array.isArray(input.events) || input.events.length>200000) fail('events must be an array of at most 200,000 requests.');
+    const seen=new Map(), events=[];
+    let duplicateRows=0;
+    input.events.forEach((source,index)=>{
+      if (!source || typeof source!=='object') fail(`Event ${index+1}: expected a request object.`);
+      const id=string(source.event_id,`Event ${index+1} event_id`), player=string(source.player_id,`Event ${index+1} player_id`);
+      const game=string(source.game,`Event ${index+1} game`);
+      const at=timestamp(source.at,`Event ${index+1} at`);
+      if (at<from || at>=until) fail(`Event ${index+1}: timestamp is outside the declared [from, until) export interval.`);
+      if (cov.games==='dice_only' && game!=='dice') fail(`Event ${index+1}: another game contradicts dice_only coverage.`);
+      const seq=source.sequence ?? null;
+      if (seq!==null && (!Number.isSafeInteger(seq) || seq<0)) fail(`Event ${index+1}: sequence must be a nonnegative safe integer.`);
+      const kind=source.outcome;
+      if (!['accepted','limit_refused','limit_clipped','other_refused'].includes(kind)) fail(`Event ${index+1}: unsupported outcome.`);
+      const requested=units(source.requested_stake,decimals,`Event ${index+1} requested_stake`);
+      const accepted=units(source.accepted_stake,decimals,`Event ${index+1} accepted_stake`);
+      const cap=units(source.stake_cap,decimals,`Event ${index+1} stake_cap`);
+      if (requested<=0n || cap<=0n || accepted>requested) fail(`Event ${index+1}: invalid stake or cap.`);
+      if (kind==='accepted' && (accepted!==requested || accepted>cap)) fail(`Event ${index+1}: an accepted request must admit its requested stake within the cap.`);
+      if (kind==='limit_clipped' && (requested<=cap || accepted!==cap)) fail(`Event ${index+1}: clipping requires a request above the cap and an accepted stake equal to it.`);
+      if (kind==='limit_refused' && (requested<=cap || accepted!==0n)) fail(`Event ${index+1}: a limit refusal requires a request above the cap and zero accepted stake.`);
+      if (kind==='other_refused' && accepted!==0n) fail(`Event ${index+1}: a refused request cannot have an accepted stake.`);
+      const key=JSON.stringify([player,id]);
+      const canonical=JSON.stringify([player,id,at,seq,game,kind,String(requested),String(accepted),String(cap)]);
+      if (seen.has(key)) {
+        const prior=seen.get(key);
+        if (prior.canonical!==canonical) fail(`Conflicting copies of request ${id} for player ${player}. Resolve the source conflict before analysis.`);
+        prior.sourceEvents.push(index+1);duplicateRows++;return;
+      }
+      const event={id,player,game,at,iso:source.at,sequence:seq,kind,requested,accepted,cap,sourceEvents:[index+1],canonical};
+      seen.set(key,event);events.push(event);
+    });
+    const players=new Map();
+    for (const event of events) {
+      if (!players.has(event.player)) players.set(event.player,[]);
+      players.get(event.player).push(event);
+    }
+    for (const [player,rows] of players) {
+      rows.sort((a,b)=>a.at-b.at || (a.sequence??0)-(b.sequence??0));
+      for (let i=1;i<rows.length;i++) {
+        if (rows[i-1].at===rows[i].at && (rows[i-1].sequence===null || rows[i].sequence===null || rows[i-1].sequence===rows[i].sequence)) {
+          fail(`Player ${player}: equal timestamps need distinct source sequence values; order cannot be inferred.`);
+        }
+      }
+    }
+    return {input,platform,currency,decimals,coverage:cov,from,until,events,players,duplicateRows};
+  }
+  function publicEvent(e,decimals) {
+    return {event_id:e.id,player_id:e.player,at:e.iso,sequence:e.sequence,game:e.game,outcome:e.kind,
+      requested_stake:decimal(e.requested,decimals),accepted_stake:decimal(e.accepted,decimals),stake_cap:decimal(e.cap,decimals),source_events:e.sourceEvents};
+  }
+  function analyze(data, options={}) {
+    const minutes=options.windowMinutes ?? 5;
+    if (!Number.isInteger(minutes) || minutes<1 || minutes>1440) fail('Follow-up window must be a whole number of minutes from 1 to 1,440.');
+    const mode=options.encounters ?? 'all';
+    if (!['all','refused'].includes(mode)) fail('encounters must be all or refused.');
+    const counts=Object.fromEntries(Object.keys(categories).map(k=>[k,0]));
+    const cohort=[];
+    let turnover=0n, coveredWindows=0;
+    for (const [player,rows] of data.players) {
+      const first=rows.findIndex(e=>e.game==='dice' && (e.kind==='limit_refused' || (mode==='all' && e.kind==='limit_clipped')));
+      if (first===-1) continue;
+      const encounter=rows[first], deadline=encounter.at+minutes*60000;
+      const followup=rows.slice(first+1).filter(e=>e.at<deadline);
+      const firstAccepted=followup.find(e=>e.accepted>0n);
+      const fullyCovered=data.coverage.status==='complete' && data.coverage.games==='all' && deadline<=data.until;
+      let category;
+      if (firstAccepted) category=firstAccepted.game!=='dice'?'other_game':firstAccepted.cap!==encounter.cap?'changed_cap':'dice';
+      else category=fullyCovered?'no_accepted':'incomplete';
+      counts[category]++;
+      if (fullyCovered) coveredWindows++;
+      const wagered=followup.reduce((sum,e)=>sum+e.accepted,0n);
+      turnover+=wagered;
+      const gaps=[];
+      if (data.coverage.status!=='complete') gaps.push(`Export coverage is declared ${data.coverage.status}.`);
+      if (data.coverage.games!=='all') gaps.push('Only Dice activity is covered; activity in other games may be missing.');
+      if (deadline>data.until) gaps.push('The export ends before the follow-up window does.');
+      cohort.push({player,category,encounter:publicEvent(encounter,data.decimals),deadline:new Date(deadline).toISOString(),
+        next_accepted:firstAccepted?publicEvent(firstAccepted,data.decimals):null,
+        next_recorded_delay_seconds:firstAccepted?(firstAccepted.at-encounter.at)/1000:null,
+        fully_covered:fullyCovered,coverage_gaps:gaps,followup_turnover:decimal(wagered,data.decimals),
+        subsequent_requests:followup.length,source_path:[publicEvent(encounter,data.decimals),...followup.map(e=>publicEvent(e,data.decimals))]});
+    }
+    cohort.sort((a,b)=>Date.parse(a.encounter.at)-Date.parse(b.encounter.at) || a.player.localeCompare(b.player));
+    return {schema:'dice-limit-response-result/1',data_origin:data.input.data_origin,platform:data.platform,currency:data.currency,
+      source_rows:data.input.events.length,unique_requests:data.events.length,duplicate_rows:data.duplicateRows,players_in_export:data.players.size,
+      cohort_players:cohort.length,covered_windows:coveredWindows,window_minutes:minutes,encounters:mode,
+      counts,followup_turnover:decimal(turnover,data.decimals),coverage:data.coverage,cohort,
+      interpretation:'Descriptive activity after each player’s first qualifying Dice limit encounter in the supplied interval. The first subsequent accepted request is the next one recorded, not proof of a causal response. No accepted bet within a covered window is not proof of departure. Coverage is declared by the input, not independently authenticated. Percentages use all cohort players, including incomplete follow-up.',
+      interval:'Events after the encounter in source order and strictly before encounter time + window. The terminal boundary is excluded.'};
+  }
+  return {SCHEMA,categories,normalize,analyze,decimal,timestamp};
+});
+</script><script>(() => {
+  'use strict';
+  const payload=JSON.parse(document.getElementById('review-data').textContent);
+  const core=window.DiceResponse, $=id=>document.getElementById(id);
+  const state={data:null,result:null,text:null,hash:null,filename:'',selected:null,page:0,load:0};
+  const sources=new Map(payload.sources.map(s=>[s.path,s]));
+  function element(tag,text,cls) {const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;}
+  function text(id,value){$(id).textContent=value;}
+  const money=value=>`${state.result.currency} ${value}`;
+  function view(name,scroll=true){
+    if(!['start','evidence','investigate'].includes(name))name='start';
+    document.querySelectorAll('.view').forEach(v=>v.hidden=v.id!==`view-${name}`);
+    document.querySelectorAll('nav button').forEach(b=>{if(b.dataset.view===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+    history.replaceState(null,'',`#${name}`);
+    if(scroll)window.scrollTo({top:0,behavior:'instant'});
+  }
+  for(const button of document.querySelectorAll('[data-view],[data-go]'))button.addEventListener('click',()=>view(button.dataset.view||button.dataset.go));
+  document.querySelector('.brand').addEventListener('click',event=>{event.preventDefault();view('start');});
+  window.addEventListener('hashchange',()=>view(location.hash.slice(1)));
+  function source(path){
+    const doc=sources.get(path);if(!doc)return;
+    text('source-title',path);text('source-hash',`SHA256 ${doc.sha256}`);text('source-text',doc.text);$('source-dialog').showModal();
+  }
+  for(const button of document.querySelectorAll('[data-source]'))button.addEventListener('click',()=>source(button.dataset.source));
+  $('close-source').addEventListener('click',()=>$('source-dialog').close());
+  for(const doc of payload.sources){const button=element('button',doc.path);button.addEventListener('click',()=>source(doc.path));$('source-library').append(button);}
+  for(const [key,label] of Object.entries(core.categories)){const option=element('option',label);option.value=key;$('filter').append(option);}
+  function download(name,value){
+    const blob=new Blob([JSON.stringify(value,null,2)+'\n'],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+  function clear(){
+    state.data=state.result=null;state.selected=null;state.page=0;
+    $('analysis').hidden=true;$('event-detail').hidden=true;$('export-result').disabled=true;$('input-error').hidden=true;
+    $('window').disabled=true;$('encounters').disabled=true;
+  }
+  async function load(bytes,filename){
+    const token=++state.load;clear();text('input-status','Reading the local file…');text('origin','Reading input. Previous results have been cleared.');$('origin').classList.remove('export');
+    try {
+      if(bytes.byteLength>50*1024*1024)throw new Error('The local input exceeds 50 MB. Prepare a smaller time-bounded export.');
+      const raw=new TextDecoder('utf-8',{fatal:true}).decode(bytes);
+      const input=JSON.parse(raw),normalized=core.normalize(input);
+      const digest=await crypto.subtle.digest('SHA-256',bytes);
+      if(token!==state.load)return;
+      state.data=normalized;state.text=raw;state.hash=Array.from(new Uint8Array(digest),x=>x.toString(16).padStart(2,'0')).join('');state.filename=filename;
+      $('input-error').hidden=true;$('window').disabled=false;$('encounters').disabled=false;$('export-result').disabled=false;
+      $('origin').classList.toggle('export',input.data_origin==='export');
+      text('origin',input.data_origin==='synthetic'
+        ? 'Synthetic walkthrough. These constructed requests demonstrate the analyzer; their counts describe no real player population. Open a mapped export to investigate actual records.'
+        : 'User-supplied export. These results describe the loaded records under their declared coverage. The tool does not authenticate their source or completeness.');
+      text('input-status',`${filename} · ${input.events.length.toLocaleString()} source events · ${normalized.events.length.toLocaleString()} unique requests · ${normalized.duplicateRows} duplicate observations counted once. Files stay in this browser.`);
+      compute();
+    }catch(error){
+      if(token!==state.load)return;
+      clear();$('input-error').hidden=false;text('input-error',`No analysis produced. ${error.message}`);text('input-status','Correct the input or restore the walkthrough.');text('origin','No input loaded.');
+    }
+  }
+  function compute(){
+    if(!state.data)return;
+    state.result=core.analyze(state.data,{windowMinutes:Number($('window').value),encounters:$('encounters').value});
+    state.page=0;render();
+  }
+  function render(){
+    const r=state.result;$('analysis').hidden=false;
+    text('cohort-total',r.cohort_players.toLocaleString());text('denominator',`Of ${r.players_in_export.toLocaleString()} players in this export. Repeated encounters count once.`);
+    text('covered-total',`${r.covered_windows} / ${r.cohort_players}`);text('turnover',money(r.followup_turnover));
+    $('category-bars').replaceChildren();
+    for(const [key,label] of Object.entries(core.categories)){
+      const n=r.counts[key],share=r.cohort_players?100*n/r.cohort_players:0;
+      const button=element('button',undefined,'category');button.dataset.category=key;
+      const heading=element('span',undefined,'category-header');heading.append(element('span',label),element('span',`${n} / ${r.cohort_players} · ${share.toFixed(1)}%`));
+      const track=element('div',undefined,'category-track'),fill=element('div',undefined,'category-fill');fill.style.width=`${share}%`;track.append(fill);button.append(heading,track);
+      button.addEventListener('click',()=>{$('filter').value=key;state.page=0;renderCohort();$('cohort-caption').scrollIntoView({block:'center'});});$('category-bars').append(button);
+    }
+    text('reading-title',r.cohort_players===0?'No qualifying encounter in this input.':`${r.counts.no_accepted} quiet windows. ${r.counts.incomplete} incomplete.`);
+    text('reading-text',r.cohort_players===0?'The supplied interval contains no first Dice limit encounter matching this definition. This is not evidence that players never reach limits.':
+      `At ${r.window_minutes} minutes, ${r.counts.dice+r.counts.changed_cap+r.counts.other_game} players have a subsequent accepted request in the records. Try another window and inspect who changes category. That sensitivity is part of the evidence.`);
+    text('coverage-description',`${r.coverage.status}; ${r.coverage.games==='all'?'all games':'Dice only'}; ${r.coverage.from} to ${r.coverage.until}.`);
+    text('coverage-basis',r.coverage.basis);text('method-text',r.interpretation);text('interval-text',r.interval);text('source-digest',`Loaded input SHA256: ${state.hash}`);
+    renderCohort();
+  }
+  function filtered(){const key=$('filter').value;return state.result.cohort.filter(c=>key==='all'||c.category===key);}
+  function renderCohort(){
+    const all=filtered(),start=state.page*25,rows=all.slice(start,start+25);
+    text('cohort-caption',`${all.length} players in this view. Select a player to inspect the exact source events.`);
+    $('cohort-rows').replaceChildren();
+    if(!rows.length){const tr=element('tr'),td=element('td','No players match this classification.');td.colSpan=5;tr.append(td);$('cohort-rows').append(tr);}
+    for(const c of rows){
+      const tr=element('tr');tr.dataset.player=c.player;
+      const id=element('td'),button=element('button',c.player);button.addEventListener('click',()=>{state.selected=c.player;renderDetail(c);highlight();$('event-detail').scrollIntoView({block:'start'});$('event-detail').focus({preventScroll:true});});id.append(button);
+      const encounter=element('td',c.encounter.outcome.replaceAll('_',' '));encounter.append(element('span',c.encounter.at,'sub'));
+      const activity=element('td',core.categories[c.category]);activity.append(element('span',c.next_accepted?`${c.next_recorded_delay_seconds} seconds later`:`${c.subsequent_requests} later requests in the window`,'sub'));
+      tr.append(id,encounter,activity,element('td',c.fully_covered?'Declared complete':'Incomplete'),element('td',money(c.followup_turnover)));$('cohort-rows').append(tr);
+    }
+    text('page-position',all.length?`${start+1}–${Math.min(start+25,all.length)} of ${all.length}`:'0 of 0');
+    $('page-prev').disabled=state.page===0;$('page-next').disabled=start+25>=all.length;
+    const chosen=all.find(c=>c.player===state.selected)||rows[0];
+    if(chosen){state.selected=chosen.player;renderDetail(chosen);}else{$('event-detail').hidden=true;state.selected=null;}
+    highlight();
+  }
+  function highlight(){for(const row of $('cohort-rows').children)row.classList.toggle('selected',row.dataset.player===state.selected);}
+  function renderDetail(c){
+    $('event-detail').hidden=false;text('detail-title',`${c.player} · ${core.categories[c.category]}`);
+    const next=c.next_accepted;
+    text('detail-explanation',next?`The first subsequent accepted record in this window is request ${next.event_id}, ${c.next_recorded_delay_seconds} seconds after the encounter, in ${next.game}. Its accepted stake is ${money(next.accepted_stake)} and its recorded cap is ${money(next.stake_cap)}.`:
+      c.category==='incomplete'?'No subsequent accepted request is present, and this window lacks the declared coverage needed to classify an observed absence.':`No subsequent accepted request is recorded before ${c.deadline}. There are ${c.subsequent_requests} subsequent request records. This does not prove the player left.`);
+    text('detail-coverage',c.fully_covered?'This window is within the input’s declared complete coverage across all games.':c.coverage_gaps.join(' '));
+    $('event-rows').replaceChildren();
+    for(const event of c.source_path.slice(0,200)){
+      const tr=element('tr'),id=element('td',event.event_id);id.append(element('span',`Input event ${event.source_events.join(', ')}`,'sub'));
+      const when=element('td',event.at);if(event.sequence!==null)when.append(element('span',`Source sequence ${event.sequence}`,'sub'));
+      const kind=element('td',event.game);kind.append(element('span',event.outcome.replaceAll('_',' '),'sub'));
+      tr.append(id,when,kind,element('td',money(event.requested_stake)),element('td',money(event.accepted_stake)),element('td',money(event.stake_cap)));$('event-rows').append(tr);
+    }
+    text('detail-truncation',c.source_path.length>200?`Showing 200 of ${c.source_path.length} events. Export this player’s evidence for the complete path.`:'The initial encounter is included for context; follow-up turnover starts after it. Source event numbers refer to the original input array, starting at 1.');
+  }
+  $('window').addEventListener('change',compute);$('encounters').addEventListener('change',compute);
+  $('filter').addEventListener('change',()=>{state.page=0;renderCohort();});
+  $('page-prev').addEventListener('click',()=>{state.page--;renderCohort();});$('page-next').addEventListener('click',()=>{state.page++;renderCohort();});
+  $('load-example').addEventListener('click',()=>{$('input-file').value='';$('filter').value='all';load(new TextEncoder().encode(payload.example_text),'Built-in synthetic walkthrough');});
+  $('input-file').addEventListener('change',async()=>{
+    const file=$('input-file').files[0];if(!file)return;
+    // Clear the former result before any asynchronous file read.
+    const token=++state.load;clear();text('input-status','Reading the selected file…');text('origin','Reading input. Previous results have been cleared.');
+    try {if(file.size>50*1024*1024)throw new Error('The input exceeds 50 MB.');const bytes=await file.arrayBuffer();if(token!==state.load)return;$('filter').value='all';await load(bytes,file.name);}
+    catch(error){if(token!==state.load)return;clear();$('input-error').hidden=false;text('input-error',`No analysis produced. ${error.message}`);text('origin','No input loaded.');text('input-status','Correct the input or restore the walkthrough.');}
+  });
+  $('export-result').addEventListener('click',()=>{if(state.result)download(`dice-response-${state.result.window_minutes}m.json`,{...state.result,source_filename:state.filename,source_sha256:state.hash,source_text:state.text});});
+  $('export-path').addEventListener('click',()=>{const c=state.result?.cohort.find(c=>c.player===state.selected);if(c)download('dice-response-player-evidence.json',{schema:'dice-limit-response-path/1',data_origin:state.result.data_origin,currency:state.result.currency,window_minutes:state.result.window_minutes,encounters:state.result.encounters,source_filename:state.filename,source_sha256:state.hash,coverage:state.result.coverage,interpretation:state.result.interpretation,player:c});});
+  view(location.hash.slice(1),false);load(new TextEncoder().encode(payload.example_text),'Built-in synthetic walkthrough');
+})();
+</script>
+</body></html>
