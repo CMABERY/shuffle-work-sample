@@ -45,8 +45,9 @@ build reconstructed three original shards containing the selected extremes
 (150 sessions) and checked their hashes and ledger totals. It then retained
 nine traces: all three policies for sessions 2286, 309 and 1649.
 
-The public package copies that explorer, its evidence and build record without
-changing their bytes. It does not rerun the aggregate study or introduce new
+The public site preserves the study evidence and build record byte for byte.
+The explorer HTML adds only a relative icon link for hosting; its study data and
+scripts are unchanged. It does not rerun the aggregate study or introduce new
 seeds. Switch policy, inspect the corresponding maximum, follow a cap event,
 and export the comparison or full simulated session ledger.
 
